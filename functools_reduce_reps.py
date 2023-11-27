@@ -4,10 +4,14 @@ import functools
 numbers = [1, 2, 3, 4, 5, 6]
 
 def multiply(list_numbers):
-    return 0
-
+    if not list_numbers:
+        return []
+    return functools.reduce(lambda x, y: x * y, list_numbers)
 
 
 #test
-print(f"[1, 2, 3, 4, 5, 6] = {multiply(numbers)}")
 assert multiply(numbers) == 720
+assert multiply([]) == []
+
+print(f"[1, 2, 3, 4, 5, 6] = {multiply(numbers)}")
+print(f"[] = {multiply([])}")
